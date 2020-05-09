@@ -1,0 +1,17 @@
+
+<body>
+    <button onclick="playerPlay">start playing</button>
+</body>
+
+<script>
+
+const selections = ["rock","paper","scissors"];
+let randomSelection = selections[Math.floor(Math.random() * selections.length)];
+
+let computerPlay = randomSelection;
+console.log("the computer plays",computerPlay);
+
+let playerPlay =()=> prompt("write rock, paper or scissors");
+
+
+</script>
