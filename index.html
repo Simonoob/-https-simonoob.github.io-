@@ -1,29 +1,7 @@
 
+<head><link rel="stylesheet" type="text/css" href="styles.css"></head>
 <body>
-
+<h1></h1>
 </body>
 
-<script>
-
-const selections = ["rock","paper","scissors"];
-let randomSelection = (selections)=> selections[Math.floor(Math.random() * selections.length)];
-
-//computer's play
-let computerSelection = randomSelection(selections);
-let computerPlay=(computerSelection)=>console.log("the computer plays",computerSelection);
-
-computerPlay(computerSelection);
-//player's play
-
-let playerSelection = prompt("write rock, paper or scissors");
-
-playerSelection.toLocaleLowerCase();
-
-let selectionValidation = function(playerSelection){
-    playerSelection == "rock" || "paper" || "scissors" ? playerPlay(): prompt("Something went wrong..\nplease write rock paper or scissors");
-}
- let playerPlay= (playerSelection)=> console.log("you play",playerSelection);
-
- selectionValidation(playerSelection);
-
-</script>
+<script src="script.js"></script>
