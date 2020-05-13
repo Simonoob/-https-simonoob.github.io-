@@ -1,7 +1,30 @@
 
 <head><link rel="stylesheet" type="text/css" href="styles.css"></head>
+
 <body>
-<h1></h1>
+    <div id="content">
+        <h1>Rock   Paper   Scissors</h1>
+
+        <div id=buttons>
+            <button id="rock" onclick="toRock()"></button>
+            <button id="paper" onclick="toPaper()"></button>
+            <button id="scissors" onclick="toScissors()"></button>
+        </div>
+
+        <div id="results">
+            <p id="player">Click on one of the images to play</p>
+            <p id="computer"></p>
+            <p id="winner"></p>
+        </div>
+
+        <div id="scoreboard">
+            <p class="score" id="player-wins">You won 0 rounds</p>
+            <p class="score" id ="computer-wins">Computer won 0 rounds</p>
+        </div>
+
+        <p id="rounds">Rounds played: 0</p>
+        <button id="reset" onclick="reset()">Reset</button>
+    </div>
 </body>
 
 <script src="script.js"></script>
