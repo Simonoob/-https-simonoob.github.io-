@@ -14,19 +14,24 @@ let randomSelection = (selections)=> selections[Math.floor(Math.random() * selec
 //player's selection + match function call -------------------------------------
 function toRock(playerSelection){
     playerSelection="rock";
-    alert(`selection ${playerSelection}`);//-+-+-++-+-+-+-+-+--+-+-+-+-+-+-+-
+    let computerSelection = randomSelection(selections);
+    matches+=1;
     play(matches,playerSelection,computerSelection,playerWins,computerWins);
-    alert(`selection ${playerSelection}`);//--+-+-++-+-+-+-+-+--+-+-+-+-+-+-+-
+    printResults(matches,playerSelection,computerSelection,winner,playerWins,computerWins);
 }
 function toPaper(playerSelection){
     playerSelection="paper";
-
+    let computerSelection = randomSelection(selections);
+    matches+=1;
     play(matches,playerSelection,computerSelection,playerWins,computerWins);
+    printResults(matches,playerSelection,computerSelection,winner,playerWins,computerWins);
 }
 function toScissors(playerSelection){
     playerSelection="scissors";
+    let computerSelection = randomSelection(selections);
+    matches+=1;
     play(matches,playerSelection,computerSelection,playerWins,computerWins);
-
+    printResults(matches,playerSelection,computerSelection,winner,playerWins,computerWins);
 }
 
 //functions defining winner and printing results ----------------------------
@@ -47,44 +52,54 @@ function printResults(matches,playerSelection,computerSelection,winner,playerWin
     document.getElementById("player").textContent=`You play ${playerSelection}`;
     document.getElementById("computer").textContent =`The computer plays ${computerSelection}`;
     document.getElementById("winner").textContent=winner;
-    document.getElementById("player-wins").textContent=`You won ${playerWins}`;
-    document.getElementById("computer-wins").textContent=`Computer won ${computerWins}`;
+    document.getElementById("player-wins").textContent=`You won ${playerWins} rounds`;
+    document.getElementById("computer-wins").textContent=`Computer won ${computerWins} rounds`;
     document.getElementById("rounds").textContent=`Rounds played: ${matches}/5`;
 }
 
 //function to reset the game ------------------------------------
-function reset(playerWins,computerWins,matches){
-    playerSelection=undefined;
-    matches=0;
+function reset(){
     playerWins=0;
     computerWins=0;
+    matches=0;
+    printResults(matches,playerSelection,computerSelection,winner,playerWins,computerWins);
+    document.getElementById("player").textContent=``;
+    document.getElementById("computer").textContent =`Click on one of the images to play`;
+    document.getElementById("winner").textContent="";
+    document.getElementById("results").style.background="rgba(126, 183, 214, 0.7)";
+    document.getElementById("results").style.position="relative";
+    document.getElementById("results").style.top="0rem";
+    document.getElementById("results").style.color="black";
+       document.getElementById("results").style.border="7px solid black";
+
 }
 //function to play -------------------------------------
-function play(playerSelection,computerSelection,playerWins,computerWins,matches){
-    alert(`selection ${playerSelection}`);//--+-+-++-+-+-+-+-+--+-+-+-+-+-+-+-
+function play(matches,playerSelection,computerSelection,playerWins,computerWins){
     if (matches<5){
-        alert(`selection ${playerSelection}`);//--+-+-++-+-+-+-+-+--+-+-+-+-+-+-+-
         if (playerSelection == "rock" || playerSelection == "paper" || playerSelection == "scissors"){
-            alert(`selection ${playerSelection}`);
-            matches+=1;
-            let computerSelection = randomSelection(selections);
+            document.getElementById("rounds").textContent=`Rounds played: ${matches}/5`;
             getWinner(computerSelection,playerSelection);
-            printResults(matches,playerSelection,computerSelection,winner,playerWins,computerWins);
         }
         else{
             alert("something went wrong\nPlease try again");
         }
     }
+
     if (matches==5){
+       document.getElementById("results").style.background="linear-gradient(rgb(5, 151, 227),rgb(251, 163, 236))";
+       document.getElementById("results").style.color="white";
+       document.getElementById("results").style.border="7px solid white";
+       document.getElementById("results").style.position="relative";
+       document.getElementById("results").style.top="-19rem";
         if (playerWins==computerWins){
             document.getElementById("player").textContent=``;
             document.getElementById("computer").textContent =`The game is a draw`;
             document.getElementById("winner").textContent=`Press reset to play again`;
         }
         else {
-            playerWins>computerWins? (console.log("Player wins the game"), alert("Player wins the game\nLet's play once more")): console.log("playing");
-            computerWins>playerWins? (console.log("Computer wins the game"),alert("Computer wins the game\nLet's play once more")):console.log("playing");
+            playerWins>computerWins? (console.log("Player wins the game"), winner="Player wins the game"): console.log();
+            computerWins>playerWins? (console.log("Computer wins the game"),winner="Computer wins the game"):console.log();
         }
-
     }
 }
+    
