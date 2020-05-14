@@ -55,6 +55,12 @@ function printResults(matches,playerSelection,computerSelection,winner,playerWin
     document.getElementById("player-wins").textContent=`You won ${playerWins} rounds`;
     document.getElementById("computer-wins").textContent=`Computer won ${computerWins} rounds`;
     document.getElementById("rounds").textContent=`Rounds played: ${matches}/5`;
+    if (matches >5){
+        document.getElementById("player").textContent=``;
+        document.getElementById("computer").textContent=`${winner}`;
+        document.getElementById("winner").textContent=` Press reset to start a new game`;
+        document.getElementById("rounds").textContent=`Rounds finished`
+    }
 }
 
 //function to reset the game ------------------------------------
@@ -70,7 +76,7 @@ function reset(){
     document.getElementById("results").style.position="relative";
     document.getElementById("results").style.top="0rem";
     document.getElementById("results").style.color="black";
-       document.getElementById("results").style.border="7px solid black";
+    document.getElementById("results").style.border="7px solid black";
 
 }
 //function to play -------------------------------------
@@ -89,17 +95,21 @@ function play(matches,playerSelection,computerSelection,playerWins,computerWins)
        document.getElementById("results").style.background="linear-gradient(rgb(5, 151, 227),rgb(251, 163, 236))";
        document.getElementById("results").style.color="white";
        document.getElementById("results").style.border="7px solid white";
-       document.getElementById("results").style.position="relative";
-       document.getElementById("results").style.top="-19rem";
         if (playerWins==computerWins){
             document.getElementById("player").textContent=``;
             document.getElementById("computer").textContent =`The game is a draw`;
             document.getElementById("winner").textContent=`Press reset to play again`;
         }
         else {
-            playerWins>computerWins? (console.log("Player wins the game"), winner="Player wins the game"): console.log();
-            computerWins>playerWins? (console.log("Computer wins the game"),winner="Computer wins the game"):console.log();
+            playerWins>computerWins? (console.log("Player wins the game"), winner="you won the game"): console.log();
+            computerWins>playerWins? (console.log("Computer wins the game"),winner="Computer won the game"):console.log();
+            computerWins==playerWins? (console.log("The game ends in a draw"),winner="The game ended in a draw"):console.log();
         }
+    }
+    else if (matches>5) {
+        playerWins>computerWins? (console.log("Player wins the game"), winner="you already won the game"): console.log();
+        computerWins>playerWins? (console.log("Computer wins the game"),winner="Computer already won the game"):console.log();
+        computerWins==playerWins? (console.log("The game ends in a draw"),winner="The game already ended in a draw"):console.log();
     }
 }
     
