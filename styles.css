@@ -37,13 +37,23 @@ p{
 }
 
 button{
-    width:200px;
-    height:200px;
+    width:150px;
+    height:150px;
     border:none;
     transition:0.2s all ease;
     font-size: 2.2em;
     margin:20px 0;
     cursor: pointer;
+    background-color: transparent;
+    border-radius: 50%;
+}
+
+.hands:active{
+    top: 0.5rem;
+}
+.hands{
+    font-size:5rem;
+    position: relative;
 }
 
 #reset{
@@ -65,31 +75,10 @@ button{
     box-shadow:0 0 1em rgba(254, 129, 232,0.7);
 }
 
-#rock{
-    background-image: url("https://image.flaticon.com/icons/svg/1213/1213131.svg");
-    background-size: cover;
-    background-color: transparent;
-}
-
-button:active{
-    position: relative;
-    top: 0.5rem;
-}
-
-#paper{
-    background: url("https://image.flaticon.com/icons/svg/497/497488.svg");
-    background-size: cover;
-}
-
-#scissors{
-    background-image: url("https://image.flaticon.com/icons/svg/595/595392.svg");
-    background-size: cover;
-    background-color: transparent;    
-}
-
 button:hover{
-    width:230px;
-    height: 230px;
+    width:130px;
+    height: 130px;
+    background-color: rgba(255,255,255,0.8);
 }
 
 #scoreboard{
@@ -108,10 +97,15 @@ button:hover{
 #rounds{
     display: flex;
     justify-content: center;
+    flex-direction: column;
     background-color: rgba(5, 151, 227,0.7);
     padding: 50px 0;
     border: 7px solid black;
     box-shadow:0 0.5em 1em rgba(56, 156, 209, 0.7);
+}
+
+#battery{
+    font-size: xx-large;
 }
 
 #results{

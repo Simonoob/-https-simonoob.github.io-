@@ -33,7 +33,6 @@ function toScissors(playerSelection){
     play(matches,playerSelection,computerSelection,playerWins,computerWins);
     printResults(matches,playerSelection,computerSelection,winner,playerWins,computerWins);
 }
-
 //functions defining winner and printing results ----------------------------
 function getWinner(computerSelection,playerSelection){
         if ((computerSelection=="rock" && playerSelection=="rock") || (computerSelection=="paper" && playerSelection=="paper") || (computerSelection=="scissors" && playerSelection=="scissors")){
@@ -112,4 +111,3 @@ function play(matches,playerSelection,computerSelection,playerWins,computerWins)
         computerWins==playerWins? (console.log("The game ends in a draw"),winner="The game already ended in a draw"):console.log();
     }
 }
-

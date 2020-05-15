@@ -1,14 +1,14 @@
 
-<head><link rel="stylesheet" type="text/css" href="styles.css"></head>
+<head><link rel="stylesheet" type="text/css" href="styles.css" ><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+</head>
 
 <body>
     <div id="content">
         <h1>Rock   Paper   Scissors</h1>
-
         <div id=buttons>
-            <button id="rock" onclick="toRock()"></button>
-            <button id="paper" onclick="toPaper()"></button>
-            <button id="scissors" onclick="toScissors()"></button>
+            <button id="rock" class="hands" onclick="toRock()"><i class="far fa-hand-rock"></i></button>
+            <button id="paper" class="hands" onclick="toPaper()" onclick="anime()"><i class="far fa-hand-paper"></i></button>
+            <button id="scissors" class="hands" onclick="toScissors()"><i class="far fa-hand-scissors"></i></button>
         </div>
 
         <div id="results">
@@ -28,3 +28,4 @@
 </body>
 
 <script src="script.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.0/anime.min.js"></script>
