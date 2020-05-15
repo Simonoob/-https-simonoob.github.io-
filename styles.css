@@ -71,6 +71,11 @@ button{
     background-color: transparent;
 }
 
+button:active{
+    position: relative;
+    top: 0.5rem;
+}
+
 #paper{
     background: url("https://image.flaticon.com/icons/svg/497/497488.svg");
     background-size: cover;

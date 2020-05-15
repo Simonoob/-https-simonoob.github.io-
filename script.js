@@ -112,4 +112,4 @@ function play(matches,playerSelection,computerSelection,playerWins,computerWins)
         computerWins==playerWins? (console.log("The game ends in a draw"),winner="The game already ended in a draw"):console.log();
     }
 }
-    
+
