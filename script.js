@@ -15,6 +15,24 @@ let randomSelection = (selections)=> selections[Math.floor(Math.random() * selec
 function toRock(playerSelection){
     playerSelection="rock";
     let computerSelection = randomSelection(selections);
+    if (matches<5){
+        anime({
+            targets:"#rock",
+            translateY:{
+                value:-80,
+                duration:300
+            },
+            rotate:{
+                value:360,
+                duration:600
+            },
+            scale:{
+                value:2,
+                duration:300
+            },
+            direction:"alternate"
+        });
+    }
     matches+=1;
     play(matches,playerSelection,computerSelection,playerWins,computerWins);
     printResults(matches,playerSelection,computerSelection,winner,playerWins,computerWins);
@@ -22,6 +40,24 @@ function toRock(playerSelection){
 function toPaper(playerSelection){
     playerSelection="paper";
     let computerSelection = randomSelection(selections);
+    if (matches<5){
+        anime({
+            targets:"#paper",
+            translateY:{
+                value:-80,
+                duration:300
+            },
+            rotate:{
+                value:360,
+                duration:600
+            },
+            scale:{
+                value:2,
+                duration:300
+            },
+            direction:"alternate"
+        });
+    }
     matches+=1;
     play(matches,playerSelection,computerSelection,playerWins,computerWins);
     printResults(matches,playerSelection,computerSelection,winner,playerWins,computerWins);
@@ -29,6 +65,24 @@ function toPaper(playerSelection){
 function toScissors(playerSelection){
     playerSelection="scissors";
     let computerSelection = randomSelection(selections);
+    if (matches<5){
+        anime({
+            targets:"#scissors",
+            translateY:{
+                value:-80,
+                duration:300
+            },
+            rotate:{
+                value:360,
+                duration:600
+            },
+            scale:{
+                value:2,
+                duration:300
+            },
+            direction:"alternate"
+        });
+    }
     matches+=1;
     play(matches,playerSelection,computerSelection,playerWins,computerWins);
     printResults(matches,playerSelection,computerSelection,winner,playerWins,computerWins);
@@ -49,6 +103,67 @@ function getWinner(computerSelection,playerSelection){
 }
 function printResults(matches,playerSelection,computerSelection,winner,playerWins,computerWins){
     document.getElementById("player").textContent=`You play ${playerSelection}`;
+    if (matches<5){
+        switch(computerSelection){
+            case "rock":
+                anime({
+                    targets:"#rock",
+                    translateY:{
+                        value:-80,
+                        duration:300
+                    },
+                    rotate:{
+                        value:360,
+                        duration:600
+                    },
+                    scale:{
+                        value:2,
+                        duration:300
+                    },
+                    direction:"alternate",
+                    delay: 1400
+                });
+                break;
+            case "paper":
+                anime({
+                    targets:"#paper",
+                    translateY:{
+                        value:-80,
+                        duration:300
+                    },
+                    rotate:{
+                        value:360,
+                        duration:600
+                    },
+                    scale:{
+                        value:2,
+                        duration:300
+                    },
+                    direction:"alternate",
+                    delay: 1400
+                });
+                break;
+            case "scissors":
+                anime({
+                    targets:"#scissors",
+                    translateY:{
+                        value:-80,
+                        duration:300
+                    },
+                    rotate:{
+                        value:360,
+                        duration:600
+                    },
+                    scale:{
+                        value:2,
+                        duration:300
+                    },
+                    direction:"alternate",
+                    delay: 1400
+                });
+                break;
+        }
+    }
     document.getElementById("computer").textContent =`The computer plays ${computerSelection}`;
     document.getElementById("winner").textContent=winner;
     document.getElementById("player-wins").textContent=`You won ${playerWins} rounds`;
