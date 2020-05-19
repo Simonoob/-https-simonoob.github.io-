@@ -33,8 +33,8 @@ function toRock(playerSelection){
             direction:"alternate"
         });
     }
-    matches+=1;
     play(matches,playerSelection,computerSelection,playerWins,computerWins);
+    matches+=1;
     printResults(matches,playerSelection,computerSelection,winner,playerWins,computerWins);
 }
 function toPaper(playerSelection){
@@ -58,8 +58,8 @@ function toPaper(playerSelection){
             direction:"alternate"
         });
     }
-    matches+=1;
     play(matches,playerSelection,computerSelection,playerWins,computerWins);
+    matches+=1;
     printResults(matches,playerSelection,computerSelection,winner,playerWins,computerWins);
 }
 function toScissors(playerSelection){
@@ -83,8 +83,8 @@ function toScissors(playerSelection){
             direction:"alternate"
         });
     }
-    matches+=1;
     play(matches,playerSelection,computerSelection,playerWins,computerWins);
+    matches+=1;
     printResults(matches,playerSelection,computerSelection,winner,playerWins,computerWins);
 }
 //functions defining winner and printing results ----------------------------
@@ -102,80 +102,47 @@ function getWinner(computerSelection,playerSelection){
         }
 }
 function printResults(matches,playerSelection,computerSelection,winner,playerWins,computerWins){
-    document.getElementById("player").textContent=`You play ${playerSelection}`;
-    if (matches<5){
-        switch(computerSelection){
-            case "rock":
-                anime({
-                    targets:"#rock",
-                    translateY:{
-                        value:-80,
-                        duration:300
-                    },
-                    rotate:{
-                        value:360,
-                        duration:600
-                    },
-                    scale:{
-                        value:2,
-                        duration:300
-                    },
-                    direction:"alternate",
-                    delay: 1400
-                });
-                break;
-            case "paper":
-                anime({
-                    targets:"#paper",
-                    translateY:{
-                        value:-80,
-                        duration:300
-                    },
-                    rotate:{
-                        value:360,
-                        duration:600
-                    },
-                    scale:{
-                        value:2,
-                        duration:300
-                    },
-                    direction:"alternate",
-                    delay: 1400
-                });
-                break;
-            case "scissors":
-                anime({
-                    targets:"#scissors",
-                    translateY:{
-                        value:-80,
-                        duration:300
-                    },
-                    rotate:{
-                        value:360,
-                        duration:600
-                    },
-                    scale:{
-                        value:2,
-                        duration:300
-                    },
-                    direction:"alternate",
-                    delay: 1400
-                });
-                break;
-        }
+    if(matches<5 && matches!==0){
+        document.getElementById("player").textContent=``;
+        document.getElementById("computer").textContent =``;
+        document.getElementById("winner").textContent=``; 
+
+        document.getElementById("player").textContent=`You play ${playerSelection}`;
+        setTimeout(() => {
+            document.getElementById("computer").textContent =`The computer plays ${computerSelection}`;
+        }, 1400);
+        setTimeout(() => {
+            document.getElementById("winner").textContent=winner; 
+        }, 2800);
+        setTimeout(() => {
+            document.getElementById("player-wins").textContent=`You won ${playerWins} rounds`;
+            document.getElementById("computer-wins").textContent=`Computer won ${computerWins} rounds`;
+            document.getElementById("rounds").textContent=`Rounds played: ${matches}/5`;
+        }, 3000);
     }
-    document.getElementById("computer").textContent =`The computer plays ${computerSelection}`;
-    document.getElementById("winner").textContent=winner;
-    document.getElementById("player-wins").textContent=`You won ${playerWins} rounds`;
-    document.getElementById("computer-wins").textContent=`Computer won ${computerWins} rounds`;
-    document.getElementById("rounds").textContent=`Rounds played: ${matches}/5`;
-    if (matches >5){
+
+    else if (matches >5){
         document.getElementById("player").textContent=``;
         document.getElementById("computer").textContent=`${winner}`;
         document.getElementById("winner").textContent=` Press reset to start a new game`;
         document.getElementById("rounds").textContent=`Rounds finished`
     }
+    setTimeout(() => {
+        if (matches==5){
+
+            playerWins>computerWins? (console.log("Player wins the game"), winner="you won the game"): console.log();
+            computerWins>playerWins? (console.log("Computer wins the game"),winner="Computer won the game"):console.log();
+            computerWins==playerWins? (console.log("The game ends in a draw"),winner="The game ended in a draw"):console.log();
+            document.getElementById("computer").style.color="rgb(253, 121, 13)";
+            document.getElementById("results").style.color="rgb(199, 199, 199);"
+            document.getElementById("player").textContent=``;
+            document.getElementById("computer").textContent=`${winner}`;
+            document.getElementById("winner").textContent=` Press reset to start a new game`;
+            document.getElementById("rounds").textContent=`Rounds finished`
+        }
+    }, 2800);
 }
+
 
 //function to reset the game ------------------------------------
 function reset(){
@@ -186,11 +153,12 @@ function reset(){
     document.getElementById("player").textContent=``;
     document.getElementById("computer").textContent =`Click on one of the images to play`;
     document.getElementById("winner").textContent="";
-    document.getElementById("results").style.background="rgba(126, 183, 214, 0.7)";
-    document.getElementById("results").style.position="relative";
-    document.getElementById("results").style.top="0rem";
-    document.getElementById("results").style.color="black";
-    document.getElementById("results").style.border="7px solid black";
+    document.getElementById("results").style.background="transparent";
+    document.getElementById("results").style.color="rgb(199, 199, 199)";
+    document.getElementById("computer").style.color="rgb(199, 199, 199)"
+    document.getElementById("player-wins").textContent=`You won ${playerWins} rounds`;
+    document.getElementById("computer-wins").textContent=`Computer won ${computerWins} rounds`;
+    document.getElementById("rounds").textContent=`Rounds played: ${matches}/5`;
 
 }
 //function to play -------------------------------------
@@ -199,28 +167,74 @@ function play(matches,playerSelection,computerSelection,playerWins,computerWins)
         if (playerSelection == "rock" || playerSelection == "paper" || playerSelection == "scissors"){
             document.getElementById("rounds").textContent=`Rounds played: ${matches}/5`;
             getWinner(computerSelection,playerSelection);
+            setTimeout(() => {
+                if (matches<5){
+                    switch(computerSelection){
+                        case "rock":
+                            anime({
+                                targets:"#rock",
+                                translateY:{
+                                    value:-80,
+                                    duration:300
+                                },
+                                rotate:{
+                                    value:360,
+                                    duration:600
+                                },
+                                scale:{
+                                    value:2,
+                                    duration:300
+                                },
+                                direction:"alternate"
+                            });
+                            break;
+                        case "paper":
+                            anime({
+                                targets:"#paper",
+                                translateY:{
+                                    value:-80,
+                                    duration:300
+                                },
+                                rotate:{
+                                    value:360,
+                                    duration:600
+                                },
+                                scale:{
+                                    value:2,
+                                    duration:300
+                                },
+                                direction:"alternate"
+                            });
+                            break;
+                        case "scissors":
+                            anime({
+                                targets:"#scissors",
+                                translateY:{
+                                    value:-80,
+                                    duration:300
+                                },
+                                rotate:{
+                                    value:360,
+                                    duration:600
+                                },
+                                scale:{
+                                    value:2,
+                                    duration:300
+                                },
+                                direction:"alternate"
+                            });
+                            break;
+            
+                    }
+                }
+            }, 1400);
         }
         else{
             alert("something went wrong\nPlease try again");
         }
     }
 
-    if (matches==5){
-       document.getElementById("results").style.background="linear-gradient(rgb(5, 151, 227),rgb(251, 163, 236))";
-       document.getElementById("results").style.color="white";
-       document.getElementById("results").style.border="7px solid white";
-        if (playerWins==computerWins){
-            document.getElementById("player").textContent=``;
-            document.getElementById("computer").textContent =`The game is a draw`;
-            document.getElementById("winner").textContent=`Press reset to play again`;
-        }
-        else {
-            playerWins>computerWins? (console.log("Player wins the game"), winner="you won the game"): console.log();
-            computerWins>playerWins? (console.log("Computer wins the game"),winner="Computer won the game"):console.log();
-            computerWins==playerWins? (console.log("The game ends in a draw"),winner="The game ended in a draw"):console.log();
-        }
-    }
-    else if (matches>5) {
+    else if (matches>=5) {
         playerWins>computerWins? (console.log("Player wins the game"), winner="you already won the game"): console.log();
         computerWins>playerWins? (console.log("Computer wins the game"),winner="Computer already won the game"):console.log();
         computerWins==playerWins? (console.log("The game ends in a draw"),winner="The game already ended in a draw"):console.log();
