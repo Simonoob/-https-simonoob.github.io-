@@ -132,14 +132,15 @@ button:hover{
 }
 
 
-@media (max-width:480px){
+@media (max-width:768px){
     body{
-        font-size: small;
-        height: auto;
+        height: 100vh;
+        font-size: 1rem;
     }
     #content{
-        width: 90%;
-        margin:20px;
+        width: 80vw;
+        margin:10px 0;
+        height: 100vh;
     }
     button{
         max-width: 100px;
@@ -155,6 +156,7 @@ button:hover{
     #scoreboard{
         max-height: 100px;
         padding: 1rem;
+        font-size: 1rem;
     }
     #results{
         max-height: 100px;
@@ -165,5 +167,9 @@ button:hover{
     #rounds{
         max-height: 100px;
         padding: 1rem;
+    }
+
+    #reset{
+        font-size: 1.7rem;
     }
 }
